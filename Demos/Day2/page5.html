@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Data Entry Form</h1>
+    <form>
+        <fieldset>
+            <legend> Personal Info</legend>
+        <div>
+            <label for="txtId"> Enter Id </label>
+            <input type="number" id="txtId"  required/>
+        </div>
+
+        <div>
+            <label for="txtName"> Enter Name </label>
+            <input type="text" id="txtName" maxlength="20" size="10" pattern="[A-Za-z ]+" required/>
+        </div>
+<div>
+    Select Age : <input id="ageCategory" name="ageCategory" list="ageRanges" />
+        <datalist id="ageRanges">
+            <option value="Under Two's"></option>
+            <option value="2-7"> </option>
+            <option value="8-12"> </option>
+            <option value="13-17"> </option>
+            <option value="Adult"> </option>
+        </datalist>
+
+</div>
+</fieldset>
+
+<fieldset>
+    <legend> Professional Info</legend>
+<div>
+    <select id="carManufacturer">
+        <optgroup label="European">
+            <option value="volvo"> Volvo </option>
+            <option value="audi"> Audi </option>
+        </optgroup>
+        <optgroup label="American">
+            <option value="chrysler"> Chrysler </option>
+            <option value="ford"> Ford </option>
+        </optgroup>
+    </select>
+
+</div>
+        <div> 
+            <label for="txtDept"> ENter Dept </label>
+            <input type="text" id="txtDept"/>
+        </div>
+
+        <div> 
+            <label for="txtAge"> Enter Age </label>
+            <input type="number" id="txtAge" min="20" max="45"/>
+        </div>
+
+        <div>
+            <label for="optcourse"> Select Course </label>
+<select>
+    <option> BCA </option>
+    <option> BBA </option>
+    <option> MCA </option>
+</select>
+        </div>
+<div>
+         <label for="radGender"> Select Gender </label>
+       Male  <input type="radio" name="gender" value="0">
+       Female  <input type="radio" name="gender" value="1">
+          
+    </div>
+    <div> Select your Qualification
+    UG <input type="checkbox" value="1"/>
+    G <input type="checkbox" value="2"/> 
+    PG <input type="checkbox" value="3"/> 
+        
+    
+    </div>
+</fieldset>
+   <div>
+    Select DOJ 
+    <input type="date"/>
+   </div>
+        <div>
+            <input type="submit" value="Submit"/>
+        </div>
+    </form>
+</body>
+</html>
