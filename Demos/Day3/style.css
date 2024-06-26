@@ -1,0 +1,45 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+    font-style: normal;
+    font-weight: 100;
+    color: brown;
+    font-size: x-large;
+    /* background-color: azure; */
+    background-image: url(image.png);
+    background-repeat: no-repeat;
+    /* background-repeat: repeat-y; */
+     background-position:  right top;
+     background-attachment: fixed;
+}
+.class1
+{
+    background-color: yellow;
+    text-align: justify;
+    border: 10px dashed red;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 20px;
+outline: 10px solid blue;
+/* text-align-last: center;
+text-decoration-line: underline; */
+text-transform: lowercase;
+text-indent: 50px;
+letter-spacing: 5px;
+font-family: "Playwrite MX", cursive;
+  font-optical-sizing: auto;
+  /* font-weight: <weight>;
+  font-style: normal; */
+
+/* text-shadow: 2px 2px red; */
+
+}
+
+
+
+ 
+  
