@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            font-size: 72px;
+            background-color:red;
+            color:white;
+            text-align:center;
+        }    
+        @media (max-width:300px)
+        {
+         #div1
+         {
+            display: block;
+            background-color: aqua;
+         }
+        }
+        @media (max-width:500px) and (min-width:300px) 
+        {
+         #div2
+         {
+            display: block;
+            background-color: yellow;
+         }
+        }
+        @media only screen and  (max-width:800px) and (min-width:500px) {
+         #div3
+         {
+             display: block;
+         }
+        }
+
+        @media (min-width:800px) {
+         #div4
+         {
+            display: block;
+            background-color: green;
+         }
+        }
+
+        </style>
+</head>
+<body>
+    
+    <div id="div1"> I am a Mobile </div>
+    <div id="div2"> I am a tab </div>
+    <div id="div3"> I am a laptop</div>
+    <div id="div4"> I am a widescreen device</div>
+</body>
+</html>
