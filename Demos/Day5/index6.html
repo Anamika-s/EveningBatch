@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <div>
+            <label for="txtNum1"> Enter Num 1 </label>
+            <input type="number" id="txtNum1">
+        </div>
+
+        
+        <div>
+            <label for="txtNum2"> Enter Num 2 </label>
+            <input type="number" id="txtNum2">
+        </div>
+
+        
+        <div>
+            <label for="txtResult"> Result </label>
+            <input type="number" id="txtResult">
+        </div>
+
+        <div>
+            <button  type="button" onclick="Add()"> Add </button>
+            <button  type="button" onclick="Subtract()"> Subtract </button>
+            <button  type="button" onclick="Product()"> Product </button>
+            <button  type="button" onclick="Remainder()"> Remainder </button>
+       <button type="button" onclick="window.close()"> Exit </button>
+        </div>
+    </form>
+    <script>
+        function Add()
+        {
+            var num1 = parseInt(document.getElementById("txtNum1").value);
+            var num2 =  parseInt(document.getElementById("txtNum2").value);
+            document.getElementById("txtResult").value= num1+num2
+        }
+        
+        function Subtract()
+        {
+            var num1 = parseInt(document.getElementById("txtNum1").value);
+            var num2 =  parseInt(document.getElementById("txtNum2").value);
+            document.getElementById("txtResult").value= num1-num2
+        }
+        
+        function Product()
+        {
+            var num1 = parseInt(document.getElementById("txtNum1").value);
+            var num2 =  parseInt(document.getElementById("txtNum2").value);
+            document.getElementById("txtResult").value= num1*num2
+        }
+        
+        function Remainder()
+        {
+            var num1 = parseInt(document.getElementById("txtNum1").value);
+            var num2 =  parseInt(document.getElementById("txtNum2").value);
+            document.getElementById("txtResult").value= num1%num2
+        }
+    </script>
+</body>
+</html>
