@@ -1,4 +1,4 @@
-console.log("makinf async call using xhr in simple way")
+console.log("making async call using xhr in simple way")
 
 var xhr = new XMLHttpRequest();
 xhr.open("Get", "data.txt", true)

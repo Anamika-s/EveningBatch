@@ -10,18 +10,25 @@ console.log("callback methods")
 //  console.log("end")
 
 
-// console.log("start")
-// function getName(name)
-// {
-//     setTimeout(()=>
-//         {
-//     console.log("inside TimeOut")
-//      return "Hello "+ name}, 2000)
-// }
+console.log("start")
+function getName(name)
+{
+    setTimeout(()=>
+        {
+    console.log("inside TimeOut")
+     return "Hello "+ name}, 2000)
+}
 
-// var name = getName("Ajay")
-// console.log(name);
-// console.log("end")
+var name = getName("Ajay")
+console.log(name);
+console.log("end")
+// start 
+// undefined
+// end
+// inside TimeOut
+
+
+
 
 
 
@@ -37,3 +44,9 @@ function getName(name, callback)
 
 getName("Ajay",(name)=>{console.log(name)});
 console.log("end")
+
+// start
+// end
+// inside TimeOut
+// Hello Ajay
+
