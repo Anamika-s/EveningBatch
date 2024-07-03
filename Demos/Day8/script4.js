@@ -16,7 +16,9 @@ async function hello1()
 
 {
    console.log("inside hello1");
-   const response = await fetch("https://reqres.in/api/users");
+   // const response = await fetch("https://reqres.in/api/users");
+   const response = await fetch("http://localhost:3000/users");
+   
    console.log("before response");
    const users = await response.json();
    return users;
