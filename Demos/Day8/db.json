@@ -2,8 +2,6 @@
 // to start json-server
 // json-server --watch db.json
 // json-server runs by default 3000
-
-
 {
     "movies": [
       {
