@@ -1,0 +1,306 @@
+UsersList
+
+import { useSelector } from "react-redux";
+import { getusers, adduser } from "./reducers/Index"
+import React from "react";
+import { Link } from "react-router-dom";
+export const UsersList =()=>
+    {
+        
+        const {users} = useSelector((state)=> state);
+        console.log(users)
+        
+        return(
+            <>
+           {users ? users.map((user)=>
+      <ul><li> {user.id}  -- {user.name} </li>	
+     <li> <Link to={`edit-user/${user.id}`}> Edit User  </Link> </li>
+     
+     <li> <Link to={`delete-user/${user.id}`}> Delete User </Link> </li>
+     </ul>
+): <h1> There are no users </h1>}
+
+            </>
+        )
+    } 
+****************************************************************************************
+AddUser
+
+import { useSelector, useDispatch } from "react-redux";
+import { adduser } from "./states/reducers";
+import { useState } from "react";
+export const AddUser=()=>
+{const { users } = useSelector(state=>state)
+const dispatch = useDispatch();
+
+
+const userobj = {
+    id: 0,
+    name: '',
+    age:0
+  };
+  const [user, setUser] = useState(userobj);
+ const add=(event)=>
+{
+    console.log(user)
+    dispatch(adduser(user))
+    event.preventDefault();
+
+}
+    return(
+        <>
+        <form>
+            <div>
+                <label> Enter Id </label>
+                <input type="number" name="id" value={user.id} onChange={(event)=>  setUser({ ...user, id: event.target.value })}/>
+            </div>
+
+
+            <div>
+                <label> Enter Name </label>
+                <input type="text" name="name" value={user.name} onChange={(event)=> setUser({ ...user, name: event.target.value})}/>
+            </div>
+
+
+            <div>
+                <label> Enter Age </label>
+                <input type="number" name="age" value={user.age} onChange={(event)=> setUser({ ...user, age: event.target.value})}/>
+            </div>
+<div>
+    <button type="button" onClick={add}> Add User </button>
+</div>
+            </form>
+        </>
+
+    )
+}
+************************************************************************************************
+
+EditUser.js
+import { useSelector, useDispatch } from "react-redux";
+import { edituser } from "./states/reducers";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { combineSlices } from "@reduxjs/toolkit";
+export const EditUser=()=>{
+ 
+const params = useParams();
+  console.log("ID IS " + params.id)
+const navigate = useNavigate();
+const { users } = useSelector(state=>state)
+const dispatch = useDispatch();
+const existinguser = users.filter(user=>user.id == params.id);
+console.log("User is " + existinguser[0])
+const {name, age} =  existinguser[0];
+const [user, setUser] = useState(
+    {
+        name,
+        age
+    }
+)
+ 
+const edit=(event)=>
+{
+    console.log("edit " + {user})
+    setUser({name:'', age:0})
+    console.log(user.name)
+    dispatch(edituser({
+        id:params.id,
+        name : user.name,
+        age : user.age})) 
+    navigate("/")
+
+}
+    return(
+        <>
+        <form>
+             
+
+
+            <div>
+                <label> Enter Name </label>
+                <input type="text" name="name" value={user.name} onChange={(event)=> setUser({ ...user, name: event.target.value})}/>
+            </div>
+
+
+            <div>
+                <label> Enter Age </label>
+                <input type="number" name="age" value={user.age} onChange={(event)=> setUser({ ...user, age: event.target.value})}/>
+            </div>
+<div>
+    <button type="button" onClick={edit}> Edit User </button>
+</div>
+            </form>
+        </>
+
+    )
+}**************************************************************************
+
+DeleteUser
+
+import { useSelector, useDispatch } from "react-redux";
+import { deleteuser } from "./states/reducers";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { combineSlices } from "@reduxjs/toolkit";
+export const DeleteUser=()=>{
+ 
+const params = useParams();
+  console.log("ID IS " + params.id)
+const navigate = useNavigate();
+const { users } = useSelector(state=>state)
+const dispatch = useDispatch();
+const existinguser = users.filter(user=>user.id == params.id);
+console.log("User is " + existinguser[0])
+const {name, age} =  existinguser[0];
+const [user, setUser] = useState(
+    {
+        name,
+        age
+    }
+)
+//  
+const delete1 =(event)=>
+{
+    // console.log("edit " + {user})
+    // setUser({name:'', age:0})
+    // console.log(user.name)
+    dispatch(deleteuser({
+        id:params.id,
+       })) 
+    navigate("/")
+
+}
+    return(
+        <>
+        <form>
+             
+
+
+            <div>
+                <label> Enter Name </label>
+                <input type="text" name="name" value={user.name} onChange={(event)=> setUser({ ...user, name: event.target.value})}/>
+            </div>
+
+
+            <div>
+                <label> Enter Age </label>
+                <input type="number" name="age" value={user.age} onChange={(event)=> setUser({ ...user, age: event.target.value})}/>
+            </div>
+<div>
+    <button type="button" onClick={delete1}> Delete User </button>
+</div>
+            </form>
+        </>
+
+    )
+}
+**********************************************************************************
+states > reducers > index.js
+
+import { userData } from "./User";
+import { createSlice } from "@reduxjs/toolkit";
+ 
+export const userSlice = createSlice({
+    name:'users',
+    initialState: userData,
+    reducers:
+    {
+        getusers :(state, action)=>
+        {
+             return state;
+        },
+        adduser: (state, action) => {
+            alert("aaa");
+            const { payload } = action;
+            state.push(action.payload)
+        },
+        edituser: (state, action)=>
+        {
+ alert("edit")
+ const{id, name, age} = action.payload;
+ alert(id + " " + name +" " + age)
+ const existinguser = state.find(userData=>userData.id==id);
+
+ alert(existinguser)
+ if(existinguser)
+ { alert("gggh")
+    existinguser.name = name;
+    existinguser.age = age;
+ }
+        },
+        deleteuser : (state, action)=>
+        {
+            const{id} = action.payload;
+            
+            return state.filter(userData=>userData.id!=id);
+           
+        }
+
+    }
+})
+
+export const {getusers, adduser, edituser, deleteuser} = userSlice.actions;
+export default userSlice.reducer;
+
+
+-----------------------------------------------------------------------------------------------
+
+store.js
+
+import  userReducer  from './reducers/index';
+import { configureStore } from "@reduxjs/toolkit";
+
+export default configureStore({
+    reducer:
+    {
+         
+        users:userReducer
+    }
+})
+--------------------------------------------------------------------------------------------------------
+
+App.js
+import logo from './logo.svg';
+import './App.css';
+import { App1 } from './ParentChild.js';
+import { Parent } from './contextapi/Parent.js';
+import { Shop } from './Shop.js';
+import { UsersList }  from './User.js'
+import { AddUser } from './AddUser.js';
+import {EditUser} from './EditUser.js';
+import {DeleteUser} from './DeleteUser.js';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+function App() {
+  var user = {name:"Ravi", address:"Delhi"};
+  return (
+    <div className="App">
+       <div>
+        <Routes>
+            <Route path="/" element={<UsersList/>}/>
+            <Route path="/adduser" element={<AddUser/>}/>
+            <Route path="edit-user/:id" element={<EditUser/>}/>
+            <Route path="delete-user/:id" element={<DeleteUser/>}/>
+        </Routes>
+    </div>
+ 
+    </div>
+  );
+}
+
+export default App;
+
+----------------------------------------------------------------------------------------
+
+Index.js
+
+ <React.StrictMode>
+    <Provider store={store}>
+    <BrowserRouter>
+    
+    <App />
+    </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
+
+
