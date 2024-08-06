@@ -1,0 +1,6 @@
+https://www.javatpoint.com/selenium-csharp
+
+alerts: https://www.lambdatest.com/blog/selenium-c-tutorial-handling-alert-windows/
+
+
+

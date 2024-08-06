@@ -1,0 +1,5 @@
+Service & MVCClient using HttpClient >  https://github.com/Anamika-s/BookServiceUsingRepo.git
+Ignore WebApplication1 
+
+Multiple Services & Consul > https://github.com/Anamika-s/OcelotApiGateway_Consul.git
+Services may be blank also, just for demo purpose
